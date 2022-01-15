@@ -5,7 +5,7 @@ order: 4
 ---
 
 
-# Hi there 
+# Hi there 👋
 
 ## Welcome to my blog
 

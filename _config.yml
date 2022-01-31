@@ -20,7 +20,7 @@ timezone: Asia/Kolkata
 
 title: Heapbytes                          # the main title
 
-tagline: A student keen learning in CyberSecurity   # it will display as the sub-title
+tagline: A student keen learning about CyberSecurity   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
  Welcome to my blog

@@ -5,11 +5,17 @@ order: 4
 ---
 
 
-# Hi there 👋
+## Hi there 👋
 
-## Welcome to my blog
+### I upload some of my HackTheBox, TryHackMe and CTF writeups here
 
-### I will upload some of my HackTheBox, TryHackMe and CTF writeups 
- > I am intrested in crypto, web and learning binary exploitation 
- 
+## Connect 
+
+<a href="https://discord.com/users/720625442662383688">
+<img height="80px" src="https://discord.c99.nl/widget/theme-2/720625442662383688.png">
+</a>
+
+
+
+
 

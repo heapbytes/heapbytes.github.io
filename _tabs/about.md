@@ -12,7 +12,7 @@ order: 4
 ## Connect 
 
 <a href="https://discord.com/users/720625442662383688">
-<img height="80px" src="https://discord.c99.nl/widget/theme-2/720625442662383688.png">
+<img height="80px" src="https://discord.c99.nl/widget/theme-3/720625442662383688.png">
 </a>
 
 

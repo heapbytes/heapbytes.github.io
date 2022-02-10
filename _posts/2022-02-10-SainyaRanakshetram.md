@@ -41,7 +41,7 @@ The CTF ranks are decided on number of flags submitted by a user, if the numbers
 
 ## Solutions 
 
-Since the server hosting the challenges is down, i have uploaded only some challenges solution. The web challenges were from easy to intermediate as well as expert level, some of the web attacks I exploited here were `sql injection`, `Rate Limit Bypass`, `jku claim misuse`, etc
+Since the server hosting the challenges is down, i have uploaded overview of only some challenge's solution. The web challenges were from easy to intermediate as well as expert level, some of the web attacks I exploited here were `sql injection`, `Rate Limit Bypass`, `jku claim misuse`, etc
 
 ###  SQLi 
 

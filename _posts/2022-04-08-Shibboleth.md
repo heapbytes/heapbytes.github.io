@@ -1,3 +1,12 @@
+---
+title: "Hackthebox Shibboleth Writeup"
+date: 2022-04-08 20:00:00 
+layout: post
+categories: htb
+tags: [htb]
+toc: true
+---
+
 # Machine name - Shibboleth ( HackTheBox )
 
 ![image](https://user-images.githubusercontent.com/56447720/141720731-d84cee05-4d93-4365-8326-5f8c3300ceef.png)

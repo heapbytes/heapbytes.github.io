@@ -81,7 +81,7 @@ theme_mode: dark
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'https://c.tenor.com/jNwKSlUPg8YAAAAC/hate-naruto.gif'
+avatar: 'https://c.tenor.com/TvxUjFq26-oAAAAC/anime-hunter-x-hunter.gif'
 
 # boolean type, the global switch for ToC in posts.
 toc: true

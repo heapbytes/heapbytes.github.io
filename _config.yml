@@ -18,7 +18,7 @@ timezone: Asia/Kolkata
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Cli3nt                          # the main title
+title: Uchiha                          # the main title
 
 tagline: A student keen to learn Ethical Hacking   # it will display as the sub-title
 
@@ -38,7 +38,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Cli3nt 
+  name: Uchiha 
   email: gouravsuram91@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -81,7 +81,7 @@ theme_mode: dark
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'https://c.tenor.com/TvxUjFq26-oAAAAC/anime-hunter-x-hunter.gif'
+avatar: 'https://c.tenor.com/waDetFL2_2AAAAAC/itachi-uchiha.gif'
 
 # boolean type, the global switch for ToC in posts.
 toc: true

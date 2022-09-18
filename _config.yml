@@ -81,7 +81,7 @@ theme_mode: dark
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: 'https://c.tenor.com/waDetFL2_2AAAAAC/itachi-uchiha.gif'
+avatar: 'https://c.tenor.com/GmnuOLYMjxUAAAAC/demon-slayer-kimetsu-no-yaiba.gif'
 
 # boolean type, the global switch for ToC in posts.
 toc: true

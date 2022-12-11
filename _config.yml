@@ -32,14 +32,14 @@ github:
   username: heapbytes             # change to your github username
 
 twitter:
-  username: GouravSuram            # change to your twitter username
+  username: heapbytes            #p change to your twitter username
 
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Uchiha 
-  email: gouravsuram91@gmail.com             # change to your email address
+  email: heapbytes@proton.me            # change to your email address
   links:
     # The first element serves as the copyright owner's link
     # https://twitter.com/username      # change to your twitter homepage

